@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <title>SmartEd</title>
 </head>
 <body>
     <div class="site-container">  
         <header>
-            <a href="#">
+            <a href="../index.html">
             <div class="logo">
                 <h1>Smart<span>Ed</span></h1>
-                <img src="images/2.png" alt="">
+                <img src="../images/2.png" alt="">
             </div>
             </a>
 
@@ -27,18 +27,38 @@
 
             <div id="overlay">
                 <div id="overlayContent">
-                    <a href="pages/addition.html">Addition</a>
-                    <a href="pages/subtraction.html">Subtraction</a>
-                    <a href="pages/multiplication.html">Multiplication</a>
-                    <a href="pages/division.html">Division</a>
+                    <a href="addition.html">Addition</a>
+                    <a href="subtract.html">Subtraction</a>
+                    <a href="multiplication.html">Multiplication</a>
+                    <a href="#">Division</a>
                 </div>
             </div>
         </header>
         
         <main>
+            <section id="mainStage">
+                <div id="testScore">
+                    <h2 id="lives"></h2>
+                    <h2 id="score"></h2>
+                </div>
+                <p id="sum"></p>
+                <div id="disappear001">
+                    <button onclick='begin001()'>Start</button>
+                </div>
+                <div id="evaluate">
+                    <p id="showUserInput"></p>
+                    <p id="correctIncorrect"></p>
+                    <div id="progressBar">
+                        <p id="barColor"></p>
+                    </div>
+                </div>
+            </section>    
+
             <div class="modal-parent">
-                <div class="modal-hello">
-                   <img src="images/hello.png" alt="">
+                <div class="modal">
+                    <h1>Game Over!</h1>
+                    <button>Try again?</button>
+                    <span class="X" draggable="true">&times;</span> 
                 </div>
             </div>
         </main>
@@ -52,6 +72,6 @@
                 <a href="#"><img src="https://cdn3.iconfinder.com/data/icons/picons-social/57/33-pinterest-512.png" alt="Pinterest"></a>
         </footer>
     </div> 
-<script src="app.js"></script>
+<script src="../js/multiplication.js"></script>
 </body>
 </html>

@@ -3,9 +3,15 @@ var a;
 var b;
 var submitBtn;
 var nextBtn;
+var lifes = 3;
+var clickState = 0;
+var container = document.getElementsByClassName("container");
+
+
+var parent = document.querySelector(".modal-parent");
+var X = document.querySelector(".X");
 
 function randomNo() {
-//create random sum BRONZE, SLIVER , GOLD
     if (points < 99) {
         randomSingleNum = () => Math.floor(Math.random()*10);
     } if (points>=100 && points<199) {
@@ -26,6 +32,8 @@ function begin001() {
     submitBtn = sum.innerHTML = rsn1 + " + " + rsn2 + ' = <input type="number" id=input001 /> <button onclick=submit001() id="submit">Submit</button>';
     progressBar.style.display = "block";
     input001.select();
+    lives.innerHTML = "Lives: " + lifes;
+    score.innerHTML = "Score: " + points;
 
 // ================================================ Listen for Enter Key on Submit Button =====================================//
 
@@ -56,8 +64,6 @@ function submit001() {
         points = points + 10;
         score.innerHTML = "Score: " + points;
 
-        
-
  // ================================================ Add glow for correct =====================================//       
         mainStage.setAttribute('class', 'green-glow');
         setTimeout(function() {mainStage.removeAttribute('class', 'green-glow') }, 300);
@@ -75,14 +81,23 @@ function submit001() {
             sum.innerHTML = "Congratulations! <br>You have completed addition!";
         }
 
-// ================================================ If userResponse Incorrect =====================================//  
+// ================================================ If userResponse Incorrect (Game Over)=====================================//  
     } else {
-        correctIncorrect.innerHTML = "Incorrect!";
-        showUserInput.innerHTML = answer; 
-        score.innerHTML = "Score: " + points;
+        lifes= lifes-1;
+        if (lifes>0) {
+            correctIncorrect.innerHTML = "Incorrect!";
+            showUserInput.innerHTML = answer; 
+            lives.innerHTML = "Lives: " + lifes;
+        } else {
+            lives.innerHTML = "Lives: " + lifes;
+            parent.style.display = "block";
+        }
+        
+
 // ================================================ Add glow for incorrect =====================================//  
         mainStage.setAttribute('class', 'red-glow');
-        setTimeout(function() {mainStage.removeAttribute('class', 'red-glow') }, 300)
+        setTimeout(function() {mainStage.removeAttribute('class', 'red-glow') }, 300);
+       
     }
 }
 
@@ -110,6 +125,16 @@ function progressBar1() {
     }
 }
 
+// ================================================ Overlay =====================================// 
 
+function myFunction(x) { 
+    if (clickState==0) {
+        overlay.style.width ='100%';
+        clickState = 1;
+    } else {
+        overlay.style.width =  "0%";
+      clickState = 0;
+    }
+    x.classList.toggle("change");   
+}
 
-      
